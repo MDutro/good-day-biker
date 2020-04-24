@@ -15,7 +15,7 @@ const App = () => {
 
    useEffect(() => {
      if (gps) {
-      axios.get('http://localhost:3001/', {
+      axios.get('http://localhost:3001', {
         params: {
           q: gps
         }
