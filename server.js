@@ -12,6 +12,7 @@ app.get('/', (req, res) => {
   axios.get(url)
   .then(response => response.data)
   .then(data => res.send(data))
+  .then(data => console.log(data))
   .catch(err => console.log(err))
 });
 
