@@ -1,6 +1,16 @@
 .container {
-  width:  85vw;
+  width:  65vw;
   margin: 0 auto;
   text-align: center;
 }
 
+.titleBar {
+  display: flex;
+  background-color: rgb(7, 50, 90);
+  justify-content: center;
+  align-items: center;
+  height: 4em;
+  box-sizing: border-box;
+  color: white;
+  margin-bottom: 10px;
+}
