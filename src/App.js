@@ -11,7 +11,7 @@ const App = () => {
   useEffect(() => navigator.geolocation.getCurrentPosition(
     position => setGps(
       [position.coords.latitude.toFixed(2), position.coords.longitude.toFixed(2)]
-  )) , [])
+  ), e => console.error(e)) , [])
 
    useEffect(() => {
      if (gps) {
