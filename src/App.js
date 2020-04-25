@@ -1,6 +1,7 @@
 import React, {useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import Today from './Today';
+import NextWeek from './NextWeek';
 import './App.css';
 import SearchBar from './SearchBar';
 import { useGPS } from './UseGPS';
@@ -56,7 +57,7 @@ const App = () => {
           low={weather.data[0].low_temp}
           wind={weather.data[0].wind_spd}
           rain={weather.data[0].pop}
-          date={weather.data[0].datetime}
+          date={weather.data[0].datetime.split("-")}
           city={weather.city_name}
           state={weather.state_code}
         />
@@ -70,6 +71,16 @@ const App = () => {
         <h1>GoodDayBiker</h1>
       </div>
       <GetWeather />
+      <ul className="weekList">
+       {weather && <NextWeek 
+          date={weather.data[0].datetime.split("-")}
+          high={weather.data[0].high_temp}
+          low={weather.data[0].low_temp}
+          wind={weather.data[0].wind_spd}
+          rain={weather.data[0].pop}
+        />
+      } 
+      </ul>
     </div>
   );
 }
