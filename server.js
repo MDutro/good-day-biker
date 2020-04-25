@@ -15,6 +15,15 @@ app.get('/', (req, res) => {
   .catch(err => console.log(err))
 });
 
+app.get('/search', (req, res) => {
+  const url = ` http://api.weatherbit.io/v2.0/forecast/daily?key=${KEY}&days=8&units=I&city=${req.query.q}`
+  axios.get(url)
+  .then(response => response.data)
+  .then(data => res.send(data))
+  .catch(err => console.log(err))
+});
+
+
 
 
 app.listen(3001, console.log("server listening on port 3001"));

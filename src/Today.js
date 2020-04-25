@@ -18,6 +18,7 @@ const Today = (props) => {
     <div>
     <div className="card">
       <h2 className="cardTitle">Today: {date[1]}/{date[2]}</h2>
+      <img src={dayEvaluation() ? "bike.png" : "noBike.png"} style={{maxWidth: "100px"}} alt="" />
       <div className="cardBody">
         <p className="topRow">{`High: ${props.high}F`}</p>
         <p className="topRow">{`Precip: ${props.rain}%`}</p>
