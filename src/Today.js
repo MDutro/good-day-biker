@@ -4,25 +4,28 @@ import preferences from './preferences';
 
 
 const Today = (props) => {
-
- const dayEvaluation = () => {
-  if(props.high >= preferences.high && props.rain <= preferences.rain && props.wind <= preferences.wind) {
-    return true
+  
+  const dayEvaluation = () => {
+    if(props.high >= preferences.high && props.rain <= preferences.rain && props.wind <= preferences.wind) {
+      return true
+    }
+      return false
   }
-    return false
-  }
 
-   
+  const date = props.date.split("-")
 
   return(
     <div>
     <div className="card">
-      <p>{props.date}</p>
-      <p>{`High: ${props.high}F`}</p>
-      <p>{`Low: ${props.low}F`}</p>
-      <p>{`Rain Chance: ${props.rain}%`}</p>
-      <p>{`Wind: ${props.wind}mph`}</p>
+      <h2 className="cardTitle">Today: {date[1]}/{date[2]}</h2>
+      <div className="cardBody">
+        <p className="topRow">{`High: ${props.high}F`}</p>
+        <p className="topRow">{`Precip: ${props.rain}%`}</p>
+        <p className="bottomRow">{`Low: ${props.low}F`}</p>
+        <p className="bottomRow">{`Wind: ${props.wind}mph`}</p>
+      </div>
     </div>
+      
       <p>Today is {dayEvaluation() ? 'a' : 'not a'} good day for a ride.</p>
     </div>
     

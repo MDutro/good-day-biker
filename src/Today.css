@@ -1,11 +1,30 @@
 .card {
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  justify-content: center;
-  flex-wrap: wrap;
   box-shadow: 0 8px 16px 0 rgba(2, 2, 2, 0.2);
   background-color: white;
   border-radius: 10px;
   margin-bottom: 20px;
+  align-items: center;
+}
+
+.cardTitle {
+  font-size: 2rem;
+  margin: 0 auto;
+  margin-bottom: 10px;
+}
+
+.cardBody {
+  display: grid;
+  grid-template-rows: 3rem 3rem;
+  grid-template-columns: 1fr 1fr;
+  /* row-gap: 1rem; */
+  column-gap: 1.5rem;
+  margin: 0 0;
+}
+
+.topRow {
+  margin-bottom: 0;
+}
+
+.bottomRow {
+  margin-top: 0;
 }
