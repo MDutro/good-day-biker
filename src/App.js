@@ -3,22 +3,12 @@ import axios from 'axios';
 import Today from './Today';
 import './App.css';
 import SearchBar from './SearchBar';
+import { useGPS } from './UseGPS';
 
 const App = () => {
-
-  const [gps, setGps] = useState('')
-  const [weather, setWeather] = useState({})
-  
-  // Attempt geolocation for user and make API call with GPS results as search parameter
-  const gpsFunction = () => {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(position => setGps(
-              [position.coords.latitude.toFixed(2), position.coords.longitude.toFixed(2)]
-          ), e => console.error(e))
-        };
-    }
-
-  useEffect(() => gpsFunction(), [])
+  const [weather, setWeather] = useState(null)
+  const gps = useGPS()
+ 
   useEffect(() => {
     if (gps) {
     axios.get('http://localhost:3001', {
@@ -32,6 +22,8 @@ const App = () => {
     } 
   }, [gps])
   
+
+
   const onCitySubmit = useCallback(city => {
     axios
       .get('http://localhost:3001/search', {
@@ -47,12 +39,14 @@ const App = () => {
 
   const GetWeather = () => {
     // If geolocation is off or fails give user search blank
-    if (!navigator.geolocation || !gps) {
-      return <div className="container">
-        <SearchBar 
-          onSubmit={onCitySubmit}
-        />
-      </div>
+    if (!weather) {
+      if (!weather || !navigator.geolocation || !gps) {
+        return <div className="container">
+          <SearchBar 
+            onSubmit={onCitySubmit}
+          />
+        </div>
+      }
     }
     // If geolocation succeeds render results
     return <div className="container">
@@ -63,6 +57,8 @@ const App = () => {
           wind={weather.data[0].wind_spd}
           rain={weather.data[0].pop}
           date={weather.data[0].datetime}
+          city={weather.city_name}
+          state={weather.state_code}
         />
       }
     </div>

@@ -13,11 +13,12 @@ const Today = (props) => {
   }
 
   const date = props.date.split("-")
-
+  console.log(props.city)
   return(
     <div>
     <div className="card">
-      <h2 className="cardTitle">Today: {date[1]}/{date[2]}</h2>
+      <h2 className="cardTitle">{props.city}, {props.state}</h2>
+      <h3 className="date">{date[1]}/{date[2]}</h3>
       <img src={dayEvaluation() ? "bike.png" : "noBike.png"} style={{maxWidth: "100px"}} alt="" />
       <div className="cardBody">
         <p className="topRow">{`High: ${props.high}F`}</p>
@@ -27,7 +28,7 @@ const Today = (props) => {
       </div>
     </div>
       
-      <p>Today is {dayEvaluation() ? 'a' : 'not a'} good day for a ride.</p>
+      <p>{dayEvaluation() ? "It's a good day, let's go ride!" : 'Maybe not today...'}</p>
     </div>
     
   )
