@@ -21,8 +21,8 @@ const Today = (props) => {
         <p className="bottomRow">{`Wind: ${Math.floor(props.wind)}mph`}</p>
       </div>
     </div>
-      
-      <p>{goodDay? "It's a good day, let's go ride!" : 'Maybe not today...'}</p>
+      <p style={{marginBottom: "5px"}}>{goodDay? "It's a good day, let's go ride!" : 'Maybe not today...'}</p>
+      <button className="button" onClick={props.clearWeather}>New Search</button>
     </div>
     
   )

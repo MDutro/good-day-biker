@@ -30,7 +30,7 @@ const NextWeek = ({weather}) => {
           <p>Y/N</p>
         </div>
       </div>
-      <hr style={{margin: "0"}}></hr>
+      <hr style={{margin: "0, 0, 3px, 0"}}></hr>
       <ul className="weekList">
         {dayList}
       </ul> 

@@ -7,9 +7,12 @@ import SearchBar from './SearchBar';
 import { useGPS } from './UseGPS';
 
 const App = () => {
-  const [weather, setWeather] = useState(null)
+  const initialState = () => JSON.parse(window.localStorage.getItem('last-search-result')) || null
+  const [weather, setWeather] = useState(initialState)
+  // const [weather, setWeather] = useState(null)
   const gps = useGPS()
  
+  // Make API call to server if gps coords are available
   useEffect(() => {
     if (gps) {
     axios.get('http://localhost:3001', {
@@ -22,9 +25,13 @@ const App = () => {
     .catch(err => console.log(err))
     } 
   }, [gps])
-  
 
+  // Write to local storage for data persistence when offline
+  useEffect(() => {
+    window.localStorage.setItem('last-search-result', JSON.stringify(weather))
+  }, [weather])
 
+  // Make API call to server when using search bar
   const onCitySubmit = useCallback(city => {
     axios
       .get('http://localhost:3001/search', {
@@ -37,11 +44,14 @@ const App = () => {
       .catch(err => console.log(err));
   }, [])
 
+  const clearWeather = () => {
+    setWeather(null)
+  }
 
   const GetWeather = () => {
     // If geolocation is off or fails give user search blank
     if (!weather) {
-      if (!weather || !navigator.geolocation || !gps) {
+      if (!weather || !navigator.geolocation) {
         return <div className="container">
           <SearchBar 
             onSubmit={onCitySubmit}
@@ -60,12 +70,12 @@ const App = () => {
           date={weather.data[0].datetime.split("-")}
           city={weather.city_name}
           state={weather.state_code}
+          clearWeather={clearWeather}
         />
       }
     </div>
   }
 
-  console.log(weather)
   return (
     <div>
       <div className="titleBar">
