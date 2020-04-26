@@ -1,23 +1,31 @@
 import React from 'react';
-import dayEvaluation from './dayEvaluation';
-import './NextWeek.css'
+import ListItem from './ListItem';
+import './NextWeek.css';
 
-const NextWeek = (props) => {
-
-  dayEvaluation();
+const NextWeek = ({weather}) => {
+  if(!weather) return null
+  
+  console.log(weather)
+  
+  const dayList = weather.map((day, index) => {
+    return(
+      <ListItem key={index.toString()}
+        date={`${day.datetime.split("-")[1]}/${day.datetime.split("-")[2]}`}
+        high={day.high_temp}
+        low={day.low_temp}
+        rain={day.precip}
+        wind={day.wind_spd}
+      />
+    )
+  })
 
   return(
     <div>
-      <li className="listItem">
-        <p>{`${props.date[1]}/${props.date[2]}`}</p> 
-        <p>{`${props.high}/${props.low}`}</p>
-        <p>{`Precip: ${props.rain}`}</p> 
-        <p>{`Wind: ${props.wind}`}</p> 
-        <img src={dayEvaluation() ? "bike.png" : "noBike.png"} style={{maxWidth: "30px"}} alt="" />
-      </li>
+      <ul className="weekList">
+        {dayList}
+      </ul> 
     </div>
   )
-
 }
 
 export default NextWeek;

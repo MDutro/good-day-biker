@@ -33,7 +33,7 @@ const App = () => {
         }
       })
       .then(response => response.data)
-      .then(data => {console.log(data); setWeather(data)})
+      .then(data => setWeather(data))
       .catch(err => console.log(err));
   }, [])
 
@@ -51,7 +51,7 @@ const App = () => {
     }
     // If geolocation succeeds render results
     return <div className="container">
-      {weather.data &&
+      {weather &&
         <Today 
           high={weather.data[0].high_temp}
           low={weather.data[0].low_temp}
@@ -65,22 +65,14 @@ const App = () => {
     </div>
   }
 
+  console.log(weather)
   return (
     <div>
       <div className="titleBar">
         <h1>GoodDayBiker</h1>
       </div>
       <GetWeather />
-      <ul className="weekList">
-       {weather && <NextWeek 
-          date={weather.data[0].datetime.split("-")}
-          high={weather.data[0].high_temp}
-          low={weather.data[0].low_temp}
-          wind={weather.data[0].wind_spd}
-          rain={weather.data[0].pop}
-        />
-      } 
-      </ul>
+      {weather && <NextWeek weather={weather.data.slice(1,)} />}
     </div>
   );
 }
