@@ -21,6 +21,16 @@ const NextWeek = ({weather}) => {
 
   return(
     <div>
+      <div className="weekList">
+        <div className="legend">
+          <p>Date</p>
+          <p>Temp</p>
+          <p>Rain</p>
+          <p>Wind</p>
+          <p>Y/N</p>
+        </div>
+      </div>
+      <hr style={{margin: "0"}}></hr>
       <ul className="weekList">
         {dayList}
       </ul> 

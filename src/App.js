@@ -51,7 +51,7 @@ const App = () => {
     }
     // If geolocation succeeds render results
     return <div className="container">
-      {weather &&
+      {weather.data &&
         <Today 
           high={weather.data[0].high_temp}
           low={weather.data[0].low_temp}
