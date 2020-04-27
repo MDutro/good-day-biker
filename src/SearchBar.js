@@ -19,7 +19,7 @@ const SearchBar = (props) => {
             onChange={e => setCity(e.target.value)} 
             value={city} 
             className="searchTerm" 
-            placeholder="Enter City and State" 
+            placeholder='Enter "City, State"'
           />
       <button type="submit" className="searchButton">
         <img src='search.svg' alt='submit search' />

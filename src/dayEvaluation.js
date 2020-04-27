@@ -1,7 +1,7 @@
-import preferences from "./preferences";
+import {savedPreferences} from "./UserPreferences";
 
 const dayEvaluation = (high, rain, wind) => {
-  if(high >= preferences.high && rain <= preferences.rain && Math.round(wind) <= preferences.wind) {
+  if(high >= savedPreferences.high && rain <= savedPreferences.rain && Math.round(wind) <= savedPreferences.wind) {
     return true
   }
     return false
