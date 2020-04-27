@@ -1,68 +1,28 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#GoodDayBiker
 
-## Available Scripts
+##Summary and Walkthrough
 
-In the project directory, you can run:
+This app helps cyclists determine whether it is a good day for a ride based on the weather forecast for the current day.
 
-### `npm start`
+The app first attempts to display the weather conditions for the user's current location via the Geolocation API. In a real mobile device, this would likely be done via the built-in GPS unit, assisted by cell signals and wireless internet connections. Successful retreival of the user's latitude and longitude triggers a call to an external API for weather data. For security purposes, the API call is made to the server (in this case, a proxy server).
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+If the geolocation attempt fails the user is redirected to a search bar. There, the user enters the city and state in which he/she would like to go for a ride. On submission, a call is made to the external weather API for relevant weather data.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+The results are displayed for the current day along with both a printed message and a graphical representation of whether or not it is a good day for a ride.
 
-### `npm test`
+Search results are stored via the localStorage API and the app iteslf is cached via the service worker built in to create-react-app.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+##Installation
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Clone this repository
+2. In the app's directory, run `npm install` in the terminal emulator of your choice to install necessary dependencies
+3. Run `node server.js` to start the proxy server
+4. In another terminal window, run `npm start`
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+###Testing Offline Functionality
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+1. In the terminal, run `npm run build`
+2. Next, run `npx serve` to install an easy-to-use proxy http server.
+3. Run `npx serve -s build`
+4. Navigate to `localhost:5000` instead of `3000`
