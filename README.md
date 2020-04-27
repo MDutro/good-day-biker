@@ -22,7 +22,8 @@ Search results are stored via the localStorage API and the app iteslf is cached 
 
 ### Testing Offline Functionality
 
-1. In the terminal, run `npm run build`
-2. Next, run `npx serve` to install an easy-to-use proxy http server.
-3. Run `npx serve -s build`
-4. Navigate to `localhost:5000` instead of `3000`
+1. Make sure that index.js, line 17 reads `serviceWorker.register();`
+2. In the terminal, run `npm run build`
+3. Next, run `npx serve` to install an easy-to-use proxy http server.
+4. Run `npx serve -s build`
+5. Navigate to `localhost:5000` instead of `3000`
