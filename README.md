@@ -1,6 +1,6 @@
-#GoodDayBiker
+# GoodDayBiker
 
-##Summary and Walkthrough
+## Summary and Walkthrough
 
 This app helps cyclists determine whether it is a good day for a ride based on the weather forecast for the current day.
 
@@ -13,14 +13,14 @@ The results are displayed for the current day along with both a printed message 
 Search results are stored via the localStorage API and the app iteslf is cached via the service worker built in to create-react-app.
 
 
-##Installation
+## Installation
 
 1. Clone this repository
 2. In the app's directory, run `npm install` in the terminal emulator of your choice to install necessary dependencies
 3. Run `node server.js` to start the proxy server
 4. In another terminal window, run `npm start`
 
-###Testing Offline Functionality
+### Testing Offline Functionality
 
 1. In the terminal, run `npm run build`
 2. Next, run `npx serve` to install an easy-to-use proxy http server.
