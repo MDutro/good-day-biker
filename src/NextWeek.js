@@ -5,8 +5,6 @@ import './NextWeek.css';
 const NextWeek = ({weather}) => {
   if(!weather) return null
   
-  console.log(weather)
-  
   const dayList = weather.map((day, index) => {
     return(
       <ListItem key={index.toString()}

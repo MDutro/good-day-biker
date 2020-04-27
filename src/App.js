@@ -2,11 +2,12 @@ import React, {useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import Today from './Today';
 import NextWeek from './NextWeek';
-import './App.css';
 import SearchBar from './SearchBar';
 import { useGPS } from './UseGPS';
+import './App.css';
 
 const App = () => {
+  // Check for state in local storage and set to weather. Otherwise, initial state is null.
   const initialState = () => JSON.parse(window.localStorage.getItem('last-search-result')) || null
   const [weather, setWeather] = useState(initialState)
   // const [weather, setWeather] = useState(null)
@@ -44,6 +45,7 @@ const App = () => {
       .catch(err => console.log(err));
   }, [])
 
+  // Fnc to clear weather state and re-render SearchBar for new search
   const clearWeather = () => {
     setWeather(null)
   }

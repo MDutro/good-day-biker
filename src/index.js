@@ -13,5 +13,5 @@ ReactDOM.render(
 
 ReactDOM.render( <App />, document.getElementById('root'));
 
-// We want to change this before publishing, but read this first https://create-react-app.dev/docs/making-a-progressive-web-app/
+// Change this to 'register' before building app to enable offline use
 serviceWorker.unregister();
