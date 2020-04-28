@@ -1,27 +1,10 @@
 .preferences {
-  height: 100vh;
-  padding-left: 20px;
-  background-color: white;
-  color: black;
-  width: 100vw;
-  position: fixed;
-  left: -100%;
-  z-index: 1000;
-  animation: slide-open 0.5s forwards;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-@keyframes slide-open {
-  100% { left: 0 }
-}
-
-.preferences.close {
-  left: -100%;
-  animation: slide-closed 0.5s backwards;
-}
-
-@keyframes slide-closed {
-  100% { left: -100% }
-}
 
 .button {
   width: 100px;

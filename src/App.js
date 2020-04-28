@@ -6,6 +6,7 @@ import SearchBar from './SearchBar';
 import UserPreferences from './UserPreferences';
 import { useGPS } from './UseGPS';
 import './App.css';
+import SettingsDrawer from './SettingsDrawer';
 
 const App = () => {
   // Check for state in local storage and set to weather. Otherwise, initial state is null.
@@ -30,7 +31,7 @@ const App = () => {
 
   // Write to local storage for data persistence when offline
   useEffect(() => {
-    window.localStorage.setItem('last-search-result', JSON.stringify(weather))
+    localStorage.setItem('last-search-result', JSON.stringify(weather))
   }, [weather])
 
   // Make API call to server when using search bar
@@ -51,19 +52,14 @@ const App = () => {
     setWeather(null)
   }
 
-  const toggleSettings = () => {
-    setSettings(!settings);
-  }
-
-  let userSettings
-  if (settings) {
-    userSettings = <UserPreferences toggleSettings={toggleSettings} />
+  const clearSettings = () => {
+    setSettings(false)
   }
 
   const GetWeather = () => {
     // If geolocation is off or fails give user search blank
     if (!weather) {
-      if (!weather || !navigator.geolocation) {
+      if (!weather || !navigator.geolocation || !gps) {
         return <div className="container">
           <SearchBar 
             onSubmit={onCitySubmit}
@@ -96,9 +92,12 @@ const App = () => {
       <div className="titleBar">
         <h1>GoodDayBiker</h1>
       </div>
-      {userSettings}
+      <SettingsDrawer 
+        isOpen={settings}
+        close={clearSettings}  
+      />
       <GetWeather />
-      <button className="button" onClick={toggleSettings}>Settings</button>
+      <button className="button" onClick={() => setSettings(true)}>Settings</button>
     </div>
   );
 }

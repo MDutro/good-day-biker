@@ -11,11 +11,6 @@ const UserPreferences = (props) => {
   // const initialState = () => ({high: 65, rain: 25, wind: 10})  
   // const [preferences, setPreferences] = useState(intitialState())
 
-  const hidePrefs = () => {
-    document.querySelector(".preferences").classList.add('close');
-    setTimeout(props.toggleSettings(), 0)
-  }
-
   return(
     <div className="preferences">
       <h1>User Preferences</h1>
@@ -34,7 +29,7 @@ const UserPreferences = (props) => {
         <input type="range" min="0" max="50" defaultValue={preferences.wind} className="slider"
           onChange={e => preferences.wind = e.target.value} />
       </div>
-      <button onClick={hidePrefs} className="button">Save</button>
+      <button className="button" onClick={props.close}>Save</button>
     </div>
   )
 }

@@ -1,0 +1,13 @@
+.drawer {
+  background-color: white;
+	height: 100vh;
+	width: 100vw;
+	position: fixed;
+	transition: transform 0.3s;
+	z-index: 200;
+	transform: translateX(-110%);
+}
+
+.openedDrawer .drawer {
+  transform: translateX(0) !important;
+}
