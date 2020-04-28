@@ -72,7 +72,8 @@ const App = () => {
       }
     }
     // If geolocation or manual search succeeds render results
-    return <div className="container">
+    return <div>
+      <div className="container">
       {weather.data &&
         <Today 
           high={weather.data[0].high_temp}
@@ -86,6 +87,8 @@ const App = () => {
         />
       }
     </div>
+      {weather && <NextWeek weather={weather.data.slice(1,)} />}
+    </div>
   }
 
   return (
@@ -96,7 +99,6 @@ const App = () => {
       {userSettings}
       <GetWeather />
       <button className="button" onClick={toggleSettings}>Settings</button>
-      {weather && <NextWeek weather={weather.data.slice(1,)} />}
     </div>
   );
 }

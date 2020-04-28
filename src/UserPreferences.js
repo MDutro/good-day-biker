@@ -1,4 +1,5 @@
 import React from 'react';
+import './UserPreferences.css';
 
 const preferences = {
     high: 65,

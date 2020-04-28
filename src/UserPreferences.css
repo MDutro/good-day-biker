@@ -1,13 +1,13 @@
 .preferences {
   height: 100vh;
   padding-left: 20px;
-  opacity: 0.8;
-  color: white;
-  width: 300px;
+  background-color: white;
+  color: black;
+  width: 100vw;
   position: fixed;
   left: -100%;
-  z-index: 200;
-  animation: slide-open 0.75s forwards;
+  z-index: 1000;
+  animation: slide-open 0.5s forwards;
 }
 
 @keyframes slide-open {
