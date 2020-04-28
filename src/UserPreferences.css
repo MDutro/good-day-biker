@@ -14,8 +14,13 @@
   100% { left: 0 }
 }
 
-.sidebar.close {
+.preferences.close {
   left: -100%;
+  animation: slide-closed 0.5s backwards;
+}
+
+@keyframes slide-closed {
+  100% { left: -100% }
 }
 
 .button {
