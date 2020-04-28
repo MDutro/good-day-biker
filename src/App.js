@@ -3,6 +3,7 @@ import axios from 'axios';
 import Today from './Today';
 import NextWeek from './NextWeek';
 import SearchBar from './SearchBar';
+import UserPreferences from './UserPreferences';
 import { useGPS } from './UseGPS';
 import './App.css';
 
@@ -10,7 +11,7 @@ const App = () => {
   // Check for state in local storage and set to weather. Otherwise, initial state is null.
   const initialState = () => JSON.parse(window.localStorage.getItem('last-search-result')) || null
   const [weather, setWeather] = useState(initialState)
-  // const [weather, setWeather] = useState(null)
+  const [settings, setSettings] = useState(false)
   const gps = useGPS()
  
   // Make API call to server if gps coords are available
@@ -50,6 +51,15 @@ const App = () => {
     setWeather(null)
   }
 
+  const toggleSettings = () => {
+    setSettings(!settings);
+  }
+
+  let userSettings
+  if (settings) {
+    userSettings = <UserPreferences toggleSettings={toggleSettings} />
+  }
+
   const GetWeather = () => {
     // If geolocation is off or fails give user search blank
     if (!weather) {
@@ -61,7 +71,7 @@ const App = () => {
         </div>
       }
     }
-    // If geolocation succeeds render results
+    // If geolocation or manual search succeeds render results
     return <div className="container">
       {weather.data &&
         <Today 
@@ -83,7 +93,9 @@ const App = () => {
       <div className="titleBar">
         <h1>GoodDayBiker</h1>
       </div>
+      {userSettings}
       <GetWeather />
+      <button className="button" onClick={toggleSettings}>Settings</button>
       {weather && <NextWeek weather={weather.data.slice(1,)} />}
     </div>
   );

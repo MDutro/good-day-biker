@@ -1,0 +1,30 @@
+.preferences {
+  height: 100vh;
+  padding-left: 20px;
+  opacity: 0.8;
+  color: white;
+  width: 300px;
+  position: fixed;
+  left: -100%;
+  z-index: 200;
+  animation: slide-open 0.75s forwards;
+}
+
+@keyframes slide-open {
+  100% { left: 0 }
+}
+
+.sidebar.close {
+  left: -100%;
+}
+
+.button {
+  width: 100px;
+  background: rgb(7, 50, 90);
+  padding: 10px;
+  margin: 5px;
+  color: white;
+  font-size: 0.85rem;
+  text-decoration: none;
+  border-radius: 10px;
+}

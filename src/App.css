@@ -20,3 +20,13 @@ body {
   margin-bottom: 10px;
 }
 
+.button {
+  width: 100px;
+  background: rgb(7, 50, 90);
+  padding: 10px;
+  margin: 5px;
+  color: white;
+  font-size: 0.85rem;
+  text-decoration: none;
+  border-radius: 10px;
+}
