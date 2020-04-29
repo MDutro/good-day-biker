@@ -3,16 +3,16 @@ import axios from 'axios';
 import Today from './Today';
 import NextWeek from './NextWeek';
 import SearchBar from './SearchBar';
-import UserPreferences from './UserPreferences';
 import { useGPS } from './UseGPS';
-import './App.css';
 import SettingsDrawer from './SettingsDrawer';
+import './App.css';
+
 
 const App = () => {
   // Check for state in local storage and set to weather. Otherwise, initial state is null.
   const initialState = () => JSON.parse(window.localStorage.getItem('last-search-result')) || null
   const [weather, setWeather] = useState(initialState)
-  const [settings, setSettings] = useState(false)
+  const [preferencesPanel, setPreferencesPanel] = useState(false)
   const gps = useGPS()
  
   // Make API call to server if gps coords are available
@@ -52,8 +52,8 @@ const App = () => {
     setWeather(null)
   }
 
-  const clearSettings = () => {
-    setSettings(false)
+  const closePrefPanel = () => {
+    setPreferencesPanel(false)
   }
 
   const GetWeather = () => {
@@ -93,11 +93,11 @@ const App = () => {
         <h1>GoodDayBiker</h1>
       </div>
       <SettingsDrawer 
-        isOpen={settings}
-        close={clearSettings}  
+        isOpen={preferencesPanel}
+        close={closePrefPanel}  
       />
       <GetWeather />
-      <button className="button" onClick={() => setSettings(true)}>Settings</button>
+      <button className="button" onClick={() => setPreferencesPanel(true)}>Settings</button>
     </div>
   );
 }
