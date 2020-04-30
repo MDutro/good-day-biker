@@ -1,9 +1,23 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { PreferencesContext } from './PreferencesContext';
 import './UserPreferences.css';
 
-const UserPreferences = (props) => {
+export const UserPreferences = (props) => {
   const { preferences, setPreferences } = React.useContext(PreferencesContext)
+
+  const savePreferences = () => {
+    localStorage.setItem("user-preferences", JSON.stringify(preferences));
+
+    props.close()
+  }
+
+  const defaultSettings = () => {
+    const defaultPreferences = {high: 65, rain: 25, wind: 10}
+    localStorage.setItem("user-preferences", JSON.stringify(defaultPreferences))
+    setPreferences(defaultPreferences)
+
+    props.close()
+  }
 
   return(
     <div className="preferences">
@@ -23,9 +37,9 @@ const UserPreferences = (props) => {
         <input type="range" min="0" max="50" value={preferences.wind} className="slider"
           onChange={e => setPreferences({...preferences, wind: e.target.value})} />
       </div>
-      <button className="button" onClick={props.close}>Save</button>
+      <button className="button" onClick={savePreferences}>Save</button>
+      <img src="gears.png" style={{maxWidth: "175px", marginTop: "10px"}} alt="" />
+      <button className="button" onClick={defaultSettings}>Reset</button>
     </div>
   )
 }
-
-export default UserPreferences;

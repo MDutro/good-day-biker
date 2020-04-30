@@ -9,4 +9,3 @@ export const useGoodDay = (high, rain, wind) => {
   }
     return false
 }
-

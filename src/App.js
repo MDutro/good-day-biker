@@ -8,14 +8,26 @@ import {SettingsDrawer} from "./SettingsDrawer";
 import { PreferencesContext } from "./PreferencesContext";
 import "./App.css";
 
+const getLocalPreferences = () => {
+  const defaultPref = {high: 65, rain: 25, wind: 10}
+  const pref = localStorage.getItem("user-preferences")
+  try {
+    return JSON.parse(pref) || defaultPref
+  } catch(e) {
+    return defaultPref
+  }
+   
+}
+
 const App = () => {
   // Check for state in local storage and set to weather. Otherwise, initial state is null.
   const initialState = () =>
-    JSON.parse(window.localStorage.getItem("last-search-result")) || null;
+    JSON.parse(localStorage.getItem("last-search-result")) || null;
   const [weather, setWeather] = useState(initialState);
   const [preferencesPanel, setPreferencesPanel] = useState(false); 
-  const [preferences, setPreferences] = useState({high: 65, rain: 25, wind: 10})
+  const [preferences, setPreferences] = useState(getLocalPreferences)
   const gps = useGPS();
+
 
   // Make API call to server if gps coords are available
   useEffect(() => {
