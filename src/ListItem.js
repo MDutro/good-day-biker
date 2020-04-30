@@ -1,10 +1,10 @@
 import React from 'react';
-import dayEvaluation from './dayEvaluation';
+import {useGoodDay} from './useGoodDay';
 import './ListItem.css';
 
 const ListItem = (props) => {
 
-  const goodDay = dayEvaluation(props.high, props.rain, props.wind)
+  const goodDay = useGoodDay(props.high, props.rain, props.wind)
 
   return(
     <li className="listItem">

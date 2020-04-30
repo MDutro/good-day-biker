@@ -1,8 +1,8 @@
 import React from 'react';
-import UserPreferences from './UserPreferences';
+import UserPreferences from '../UserPreferences';
 import './SettingsDrawer.css'
 
-const SettingsDrawer = (props) => {
+export const SettingsDrawer = (props) => {
 
   return(
     <div className={props.isOpen === true ? "openedDrawer" : ""}>
@@ -12,5 +12,3 @@ const SettingsDrawer = (props) => {
     </div>
   )
 }
-
-export default SettingsDrawer

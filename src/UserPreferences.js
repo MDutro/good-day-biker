@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
+import { PreferencesContext } from './PreferencesContext';
 import './UserPreferences.css';
 
 const UserPreferences = (props) => {
-  const initialState = () => ({high: 65, rain: 25, wind: 10})  
-  const [preferences, setPreferences] = useState(initialState)
+  const { preferences, setPreferences } = React.useContext(PreferencesContext)
 
   return(
     <div className="preferences">

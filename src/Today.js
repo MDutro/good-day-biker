@@ -1,12 +1,12 @@
 import React from 'react';
 import './Today.css';
-import dayEvaluation from './dayEvaluation';
+import { useGoodDay } from './useGoodDay';
 
 
 const Today = (props) => {
   
 
-  const goodDay = dayEvaluation(props.high, props.rain, props.wind)
+  const goodDay = useGoodDay(props.high, props.rain, props.wind)
 
   return(
     <div>
