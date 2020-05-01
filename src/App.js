@@ -4,34 +4,36 @@ import Today from "./Today";
 import NextWeek from "./NextWeek";
 import SearchBar from "./SearchBar";
 import { useGPS } from "./UseGPS";
-import {SettingsDrawer} from "./SettingsDrawer";
+import { SettingsDrawer } from "./SettingsDrawer";
+import { RatingsDrawer } from "./RatingsDrawer";
 import { PreferencesContext } from "./PreferencesContext";
 import "./App.css";
 
 const getLocalPreferences = () => {
-  const defaultPref = {high: 65, rain: 25, wind: 10}
-  const pref = localStorage.getItem("user-preferences")
+  const defaultPref = { high: 65, rain: 25, wind: 10 };
+  const pref = localStorage.getItem("user-preferences");
   try {
-    return JSON.parse(pref) || defaultPref
-  } catch(e) {
-    return defaultPref
+    return JSON.parse(pref) || defaultPref;
+  } catch (e) {
+    return defaultPref;
   }
-   
-}
+};
 
 const App = () => {
   // Check for state in local storage and set to weather. Otherwise, initial state is null.
   const initialState = () =>
     JSON.parse(localStorage.getItem("last-search-result")) || null;
   const [weather, setWeather] = useState(initialState);
-  const [preferencesPanel, setPreferencesPanel] = useState(false); 
-  const [preferences, setPreferences] = useState(getLocalPreferences)
-  const gps = useGPS();
+  // Toggles for preferences and ratings panels
+  const [preferencesPanel, setPreferencesPanel] = useState(false);
+  const [ratingsPanel, setRatingsPael] =useState(false);
 
+  const [preferences, setPreferences] = useState(getLocalPreferences);
+  const gps = useGPS();
 
   // Make API call to server if gps coords are available
   useEffect(() => {
-    if (gps) {
+    if (gps && !weather) {
       axios
         .get("http://localhost:3001", {
           params: {
@@ -42,7 +44,7 @@ const App = () => {
         .then((data) => setWeather(data))
         .catch((err) => console.log(err));
     }
-  }, [gps]);
+  }, [gps, weather]);
 
   // Write to local storage for data persistence when offline
   useEffect(() => {
@@ -70,6 +72,10 @@ const App = () => {
   const closePrefPanel = () => {
     setPreferencesPanel(false);
   };
+
+  const closeRatePanel = () => {
+    setRatingsPael(false);
+  }
 
   const GetWeather = () => {
     // If geolocation is off or fails give user search blank
@@ -105,12 +111,19 @@ const App = () => {
   };
 
   return (
-    <PreferencesContext.Provider value={{preferences, setPreferences}}>
+    <PreferencesContext.Provider value={{ preferences, setPreferences }}>
       <div>
         <div className="titleBar">
           <h1>GoodDayBiker</h1>
         </div>
         <SettingsDrawer isOpen={preferencesPanel} close={closePrefPanel} />
+        {weather && <RatingsDrawer
+          isOpen={ratingsPanel}
+          close={closeRatePanel}
+          high={weather.data[0].high_temp} 
+          wind={weather.data[0].wind_spd}
+          rain={weather.data[0].pop}
+        /> }
         <GetWeather />
         <button className="button" onClick={() => setPreferencesPanel(true)}>
           Settings
