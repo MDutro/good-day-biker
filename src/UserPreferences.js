@@ -20,7 +20,7 @@ export const UserPreferences = (props) => {
   }
 
   return(
-    <div className="preferences">
+    <div className="panel">
       <h1>User Preferences</h1>
       <p>Minimum temperature: <strong>{preferences.high}</strong></p>
       <div className="sliderContainer">

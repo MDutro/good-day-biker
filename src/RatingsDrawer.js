@@ -4,6 +4,7 @@ import './SettingsDrawer/SettingsDrawer.css'
 
 export const RatingsDrawer = (props) => {
 
+
   return(
     <div className={props.isOpen === true ? "openedDrawer" : ""}>
       <div className="drawer">

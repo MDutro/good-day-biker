@@ -26,7 +26,7 @@ const App = () => {
   const [weather, setWeather] = useState(initialState);
   // Toggles for preferences and ratings panels
   const [preferencesPanel, setPreferencesPanel] = useState(false);
-  const [ratingsPanel, setRatingsPael] =useState(false);
+  const [ratingsPanel, setRatingsPanel] =useState(false);
 
   const [preferences, setPreferences] = useState(getLocalPreferences);
   const gps = useGPS();
@@ -74,7 +74,7 @@ const App = () => {
   };
 
   const closeRatePanel = () => {
-    setRatingsPael(false);
+    setRatingsPanel(false);
   }
 
   const GetWeather = () => {
@@ -127,6 +127,9 @@ const App = () => {
         <GetWeather />
         <button className="button" onClick={() => setPreferencesPanel(true)}>
           Settings
+        </button>
+        <button className="button" onClick={() => setRatingsPanel(true)}>
+          Rate Ride
         </button>
       </div>
     </PreferencesContext.Provider>
