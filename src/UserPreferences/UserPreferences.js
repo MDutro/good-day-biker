@@ -31,6 +31,7 @@ export const UserPreferences = (props) => {
     };
     localStorage.setItem("user-preferences", JSON.stringify(ratingsPrefs))
     setPreferences(ratingsPrefs)
+    props.close();
   };
 
   return (
