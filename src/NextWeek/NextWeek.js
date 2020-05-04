@@ -1,8 +1,8 @@
 import React from 'react';
-import ListItem from './ListItem';
+import { ListItem } from '../ListItem/ListItem';
 import './NextWeek.css';
 
-const NextWeek = ({weather}) => {
+export const NextWeek = ({weather}) => {
   if(!weather) return null
   
   const dayList = weather.map((day, index) => {
@@ -35,7 +35,5 @@ const NextWeek = ({weather}) => {
     </div>
   )
 }
-
-export default NextWeek;
 
 

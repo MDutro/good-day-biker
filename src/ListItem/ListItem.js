@@ -1,8 +1,8 @@
 import React from 'react';
-import {useGoodDay} from './useGoodDay';
+import {useGoodDay} from '../utils/useGoodDay';
 import './ListItem.css';
 
-const ListItem = (props) => {
+export const ListItem = (props) => {
 
   const goodDay = useGoodDay(props.high, props.rain, props.wind)
 
@@ -16,5 +16,3 @@ const ListItem = (props) => {
     </li>
   )
 }
-
-export default ListItem;

@@ -1,9 +1,9 @@
 import React from 'react';
 import './Today.css';
-import { useGoodDay } from './useGoodDay';
+import { useGoodDay } from '../utils/useGoodDay';
 
 
-const Today = (props) => {
+export const Today = (props) => {
   
 
   const goodDay = useGoodDay(props.high, props.rain, props.wind)
@@ -27,5 +27,3 @@ const Today = (props) => {
     
   )
 }
-
-export default Today;

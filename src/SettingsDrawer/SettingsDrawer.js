@@ -1,6 +1,6 @@
 import React from 'react';
-import { UserPreferences } from '../UserPreferences';
-import './SettingsDrawer.css'
+import { UserPreferences } from '../UserPreferences/UserPreferences';
+import '../SettingsDrawer/SettingsDrawer.css'
 
 export const SettingsDrawer = (props) => {
 

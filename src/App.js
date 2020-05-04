@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
-import Today from "./Today";
-import NextWeek from "./NextWeek";
-import SearchBar from "./SearchBar";
-import { useGPS } from "./UseGPS";
+import { Today } from "./Today/Today";
+import { NextWeek } from "./NextWeek/NextWeek";
+import { SearchBar } from "./SearchBar/SearchBar";
+import { useGPS } from "./utils/UseGPS";
 import { SettingsDrawer } from "./SettingsDrawer";
-import { RatingsDrawer } from "./RatingsDrawer";
-import { PreferencesContext } from "./PreferencesContext";
+import { RatingsDrawer } from "./RatingsDrawer/RatingsDrawer";
+import { PreferencesContext } from "./utils/PreferencesContext";
 import "./App.css";
 
 const getLocalPreferences = () => {

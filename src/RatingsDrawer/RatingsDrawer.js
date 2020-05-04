@@ -1,6 +1,6 @@
 import React from 'react';
-import { RateDay } from './RateDay';
-import './SettingsDrawer/SettingsDrawer.css'
+import { RateDay } from '../RateDay/RateDay';
+import '../SettingsDrawer/SettingsDrawer.css'
 
 export const RatingsDrawer = (props) => {
 

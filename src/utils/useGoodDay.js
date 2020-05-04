@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { PreferencesContext } from './PreferencesContext';
+import { PreferencesContext } from '../utils/PreferencesContext';
 
 export const useGoodDay = (high, rain, wind) => {
   const {preferences} = React.useContext(PreferencesContext)

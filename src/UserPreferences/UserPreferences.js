@@ -1,5 +1,5 @@
 import React from "react";
-import { PreferencesContext } from "./PreferencesContext";
+import { PreferencesContext } from "../utils/PreferencesContext";
 import "./UserPreferences.css";
 
 export const UserPreferences = (props) => {
