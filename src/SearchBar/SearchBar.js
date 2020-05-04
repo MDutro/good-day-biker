@@ -22,7 +22,7 @@ export const SearchBar = (props) => {
             placeholder='Enter "City, State"'
           />
       <button type="submit" className="searchButton">
-        <img src='search.svg' alt='submit search' />
+        <img src='search.png' style={{width: "20px"}} alt='submit search' />
       </button>
       </form>
       <img src="queryBike.png" style={{maxWidth: "150px"}} alt="" />
