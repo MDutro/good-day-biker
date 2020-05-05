@@ -29,9 +29,9 @@ export const NextWeek = ({weather}) => {
         </div>
       </div>
       <hr style={{margin: "0, 0, 3px, 0"}}></hr>
-      <ul className="weekList">
+      <div className="weekList">
         {dayList}
-      </ul> 
+      </div> 
     </div>
   )
 }

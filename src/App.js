@@ -82,15 +82,17 @@ const App = () => {
     if (!weather) {
       if (!weather || !navigator.geolocation || !gps) {
         return (
-          <div className="container">
-            <SearchBar onSubmit={onCitySubmit} />
+          <div className="contentRoot">
+            <div className="container">
+              <SearchBar onSubmit={onCitySubmit} />
+            </div>
           </div>
-        );
+        ); 
       }
     }
     // If geolocation or manual search succeeds render results
     return (
-      <div>
+      <div className="contentRoot">
         <div className="container">
           {weather.data && (
             <Today

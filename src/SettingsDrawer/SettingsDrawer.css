@@ -1,11 +1,13 @@
 .drawer {
   background-color: white;
-	height: 100vh;
+	height: calc(100vh - 3rem);
 	width: 100vw;
 	position: fixed;
 	transition: transform 0.3s;
 	z-index: 200;
 	transform: translateX(-110%);
+	top: 3rem;
+	overflow: auto;
 }
 
 .openedDrawer .drawer {

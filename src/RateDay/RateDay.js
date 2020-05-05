@@ -31,7 +31,7 @@ export const RateDay = (props) => {
       case "perfect":
         return { ...state, perfect: rateDate(state.perfect) };
       default:
-        throw new Error();
+        return state;
     }
   };
 
@@ -50,6 +50,7 @@ export const RateDay = (props) => {
     <div className="panel">
       <h1>Rate your ride!</h1>
       <select onChange={handleChange}>
+        <option value=""></option>
         <option value={"poor"}>1 - Poor Conditions</option>
         <option value={"bad"}>2 - Pretty Bad</option>
         <option value={"ok"}>3 - Okay</option>

@@ -19,19 +19,22 @@ export const UserPreferences = (props) => {
     );
     setPreferences(defaultPreferences);
 
-    props.close();
+    setTimeout(() => props.close(), 1000);
   };
 
   const ratingsSettings = () => {
     const rating = JSON.parse(localStorage.getItem("user-ratings"));
-    const ratingsPrefs = {
+    if(rating) {
+      const ratingsPrefs = {
       high: Math.floor((rating.good[0] + rating.perfect[0]) / 2),
       rain: Math.floor((rating.good[1] + rating.perfect[1]) / 2),
       wind: Math.floor((rating.good[2] + rating.perfect[2]) / 2),
     };
-    localStorage.setItem("user-preferences", JSON.stringify(ratingsPrefs))
-    setPreferences(ratingsPrefs)
-    props.close();
+      localStorage.setItem("user-preferences", JSON.stringify(ratingsPrefs))
+      setPreferences(ratingsPrefs)
+      props.close();
+    }
+    document.getElementById("ratings").innerText= "No day ratings found! Get out there and ride!"
   };
 
   return (
@@ -43,7 +46,7 @@ export const UserPreferences = (props) => {
       <div className="sliderContainer">
         <input
           type="range"
-          min="-40"
+          min="0"
           max="110"
           value={preferences.high}
           className="slider"
@@ -53,7 +56,7 @@ export const UserPreferences = (props) => {
         />
       </div>
       <p>
-        Maximum precipitaion chance: <strong>{preferences.rain}</strong>
+        Maximum precipitation chance: <strong>{preferences.rain}</strong>
       </p>
       <div className="sliderContainer">
         <input
@@ -90,7 +93,7 @@ export const UserPreferences = (props) => {
         style={{ maxWidth: "175px", marginTop: "10px" }}
         alt=""
       />
-      <p>Use day rating history to set preferences?</p>
+      <p id="ratings">Use day rating history to set preferences?</p>
       <button className="button" onClick={ratingsSettings}>
         Do it!
       </button>
