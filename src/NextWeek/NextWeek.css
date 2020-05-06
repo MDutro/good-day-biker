@@ -2,6 +2,16 @@
   padding-left: 0;
   margin: 0 auto;
   width: 80%; 
+  z-index: 10;
+}
+
+@media only screen and (min-width: 768px){
+  .weekList {
+    font-size: 2rem;
+    font-weight: 500;
+  }
+  
+  
 }
 
 .listHeader {
@@ -10,14 +20,6 @@
   margin-bottom: 0;
 }
 
-/* .legend {
-  display: flex;
-  justify-content: space-between;
-  font-size: 1rem;
-  list-style-type: none;
-  margin-top: 0;
-  margin-bottom: 0;
-} */
 .legend {
   font-size: 1rem;
   margin-top: 0;

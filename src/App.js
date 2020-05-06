@@ -118,6 +118,7 @@ const App = () => {
         <div className="titleBar">
           <h1>GoodDayBiker</h1>
         </div>
+        <img src="bicycles.jpg" className="bikes" alt=""/>
         <SettingsDrawer isOpen={preferencesPanel} close={closePrefPanel} />
         {weather && <RatingsDrawer
           isOpen={ratingsPanel}

@@ -6,6 +6,13 @@
   align-items: center;
 }
 
+@media only screen and (min-width: 768px){
+  .card {
+    font-size: 1.25rem;
+    font-weight: 500;
+  }
+}
+
 .cardTitle {
   font-size: 2rem;
   margin: 0 auto;
