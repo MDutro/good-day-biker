@@ -1,4 +1,5 @@
 import React, { useReducer } from "react";
+import { PreferencesContext } from "../utils/PreferencesContext";
 import "../UserPreferences/UserPreferences.css";
 
 const initialRating = JSON.parse(localStorage.getItem("user-ratings")) || {
@@ -10,6 +11,7 @@ const initialRating = JSON.parse(localStorage.getItem("user-ratings")) || {
 };
 
 export const RateDay = (props) => {
+  const { setPreferences } = React.useContext(PreferencesContext);
 
   // Take the current day's conditions and average them with the baseline and/or saved conditions in local storage
   const rateDate = (stateArr) => [
@@ -46,6 +48,21 @@ export const RateDay = (props) => {
     dispatch({ type: e.target.value });
   };
 
+  const ratingsSettings = () => {
+    const rating = JSON.parse(localStorage.getItem("user-ratings"));
+    if(rating) {
+      const ratingsPrefs = {
+      high: Math.floor((rating.good[0] + rating.perfect[0]) / 2),
+      rain: Math.floor((rating.good[1] + rating.perfect[1]) / 2),
+      wind: Math.floor((rating.good[2] + rating.perfect[2]) / 2),
+    };
+      localStorage.setItem("user-preferences", JSON.stringify(ratingsPrefs))
+      setPreferences(ratingsPrefs)
+      props.close();
+    }
+    document.getElementById("ratings").innerText= "No day ratings found! Get out there and ride!"
+  };
+
   return (
     <div className="panel">
       <h1>Rate your ride!</h1>
@@ -59,6 +76,10 @@ export const RateDay = (props) => {
       </select>
       <button className="button" onClick={saveRating}>
         Submit
+      </button>
+      <p id="ratings">Use day rating history to set preferences?</p>
+      <button className="button" onClick={ratingsSettings}>
+        Do it!
       </button>
     </div>
   );

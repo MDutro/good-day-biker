@@ -22,21 +22,6 @@ export const UserPreferences = (props) => {
     setTimeout(() => props.close(), 1000);
   };
 
-  const ratingsSettings = () => {
-    const rating = JSON.parse(localStorage.getItem("user-ratings"));
-    if(rating) {
-      const ratingsPrefs = {
-      high: Math.floor((rating.good[0] + rating.perfect[0]) / 2),
-      rain: Math.floor((rating.good[1] + rating.perfect[1]) / 2),
-      wind: Math.floor((rating.good[2] + rating.perfect[2]) / 2),
-    };
-      localStorage.setItem("user-preferences", JSON.stringify(ratingsPrefs))
-      setPreferences(ratingsPrefs)
-      props.close();
-    }
-    document.getElementById("ratings").innerText= "No day ratings found! Get out there and ride!"
-  };
-
   return (
     <div className="panel">
       <h1>User Preferences</h1>
@@ -93,10 +78,6 @@ export const UserPreferences = (props) => {
         style={{ maxWidth: "175px", marginTop: "10px" }}
         alt=""
       />
-      <p id="ratings">Use day rating history to set preferences?</p>
-      <button className="button" onClick={ratingsSettings}>
-        Do it!
-      </button>
       <button className="button" onClick={defaultSettings}>
         Reset
       </button>
