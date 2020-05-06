@@ -1,21 +1,22 @@
 import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
-import { Today } from "./Today/Today";
-import { NextWeek } from "./NextWeek/NextWeek";
-import { SearchBar } from "./SearchBar/SearchBar";
+import { Today } from "./Today";
+import { NextWeek } from "./NextWeek";
+import { SearchBar } from "./SearchBar";
 import { useGPS } from "./utils/UseGPS";
 import { SettingsDrawer } from "./SettingsDrawer";
-import { RatingsDrawer } from "./RatingsDrawer/RatingsDrawer";
+import { RatingsDrawer } from "./RatingsDrawer";
 import { PreferencesContext } from "./utils/PreferencesContext";
+import { SERVER_BASE } from "./constants";
+import { DEFAULT_SETTINGS } from "./constants";
 import "./App.css";
 
 const getLocalPreferences = () => {
-  const defaultPref = { high: 65, rain: 25, wind: 10 };
   const pref = localStorage.getItem("user-preferences");
   try {
-    return JSON.parse(pref) || defaultPref;
+    return JSON.parse(pref) || DEFAULT_SETTINGS;
   } catch (e) {
-    return defaultPref;
+    return DEFAULT_SETTINGS;
   }
 };
 
@@ -35,7 +36,7 @@ const App = () => {
   useEffect(() => {
     if (gps) {
       axios
-        .get("http://localhost:3001", {
+        .get(SERVER_BASE, {
           params: {
             q: gps,
           },
@@ -118,7 +119,7 @@ const App = () => {
         <div className="titleBar">
           <h1>GoodDayBiker</h1>
         </div>
-        <img src="bicycles.jpg" className="bikes" alt=""/>
+        <div className="bikeBackground"/>
         <SettingsDrawer isOpen={preferencesPanel} close={closePrefPanel} />
         {weather && <RatingsDrawer
           isOpen={ratingsPanel}

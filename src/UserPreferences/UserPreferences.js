@@ -1,5 +1,6 @@
 import React from "react";
 import { PreferencesContext } from "../utils/PreferencesContext";
+import { DEFAULT_SETTINGS } from "../constants";
 import "./UserPreferences.css";
 
 export const UserPreferences = (props) => {
@@ -10,12 +11,11 @@ export const UserPreferences = (props) => {
   };
 
   const defaultSettings = () => {
-    const defaultPreferences = { high: 65, rain: 25, wind: 10 };
     localStorage.setItem(
       "user-preferences",
-      JSON.stringify(defaultPreferences)
+      JSON.stringify(DEFAULT_SETTINGS)
     );
-    setPreferences(defaultPreferences);
+    setPreferences(DEFAULT_SETTINGS);
   };
 
   return (

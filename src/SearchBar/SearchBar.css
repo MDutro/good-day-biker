@@ -1,12 +1,24 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 16px 0 rgba(2, 2, 2, 0.2);
+  background-color: white;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  align-items: center;
+  padding: 3px;
+}
+
+
 .search {
-  width: 100%;
+  width: 90%;
   position: relative;
   display: flex;
   margin-bottom: 10px;
 }
 
 .searchTerm {
-  width: 100%;
+  width: 90%;
   border: 3px solid rgb(7, 50, 90);
   border-right: none;
   padding: 5px;

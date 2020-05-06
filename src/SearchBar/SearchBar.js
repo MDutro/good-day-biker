@@ -11,7 +11,7 @@ export const SearchBar = (props) => {
   };
 
   return(
-    <div>
+    <div className="card">
       <h2>Good day to ride?</h2>
     <div className="wrap">
       <form className="search" onSubmit={onFormSubmit}>
