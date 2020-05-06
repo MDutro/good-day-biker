@@ -33,7 +33,7 @@ const App = () => {
 
   // Make API call to server if gps coords are available
   useEffect(() => {
-    if (gps && !weather) {
+    if (gps) {
       axios
         .get("http://localhost:3001", {
           params: {
@@ -44,7 +44,7 @@ const App = () => {
         .then((data) => setWeather(data))
         .catch((err) => console.log(err));
     }
-  }, [gps, weather]);
+  }, [gps]);
 
   // Write to local storage for data persistence when offline
   useEffect(() => {
