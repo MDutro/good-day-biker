@@ -7,8 +7,6 @@ export const UserPreferences = (props) => {
 
   const savePreferences = () => {
     localStorage.setItem("user-preferences", JSON.stringify(preferences));
-
-    props.close();
   };
 
   const defaultSettings = () => {
@@ -18,14 +16,12 @@ export const UserPreferences = (props) => {
       JSON.stringify(defaultPreferences)
     );
     setPreferences(defaultPreferences);
-
-    setTimeout(() => props.close(), 1000);
   };
 
   return (
     <div className="panel">
       <h1>User Preferences</h1>
-      <p>
+      <p className="spacer">
         Minimum temperature: <strong>{preferences.high}</strong>
       </p>
       <div className="sliderContainer">
@@ -40,7 +36,7 @@ export const UserPreferences = (props) => {
           }
         />
       </div>
-      <p>
+      <p className="spacer">
         Maximum precipitation chance: <strong>{preferences.rain}</strong>
       </p>
       <div className="sliderContainer">
@@ -55,10 +51,10 @@ export const UserPreferences = (props) => {
           }
         />
       </div>
-      <p>
+      <p className="spacer">
         Maximum wind speed: <strong>{preferences.wind}</strong>
       </p>
-      <div className="sliderContainer">
+      <div className="sliderContainer spacer">
         <input
           type="range"
           min="0"
@@ -70,17 +66,23 @@ export const UserPreferences = (props) => {
           }
         />
       </div>
-      <button className="button" onClick={savePreferences}>
+      <button className="button spacer" onClick={savePreferences}>
         Save
       </button>
       <img
         src="gears.png"
+        className="spacer"
         style={{ maxWidth: "175px", marginTop: "10px" }}
         alt=""
       />
-      <button className="button" onClick={defaultSettings}>
-        Reset
-      </button>
+      <div className="buttonBar">
+        <button className="button" onClick={defaultSettings}>
+          Reset
+        </button>
+        <button className="button" onClick={() => props.close()}>
+         Close
+        </button>
+      </div> 
     </div>
   );
 };

@@ -19,7 +19,7 @@ export const NextWeek = ({weather}) => {
 
   return(
     <div>
-      <div className="weekList">
+      <div className="weekGrid">
         <div className="legend">
           <p>Date</p>
           <p>Temp</p>
@@ -29,7 +29,7 @@ export const NextWeek = ({weather}) => {
         </div>
       </div>
       <hr style={{margin: "0, 0, 3px, 0"}}></hr>
-      <div className="weekList">
+      <div className="weekGrid buffer">
         {dayList}
       </div> 
     </div>

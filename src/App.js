@@ -128,12 +128,14 @@ const App = () => {
           rain={weather.data[0].pop}
         /> }
         <GetWeather />
-        <button className="button" onClick={() => setPreferencesPanel(true)}>
-          Settings
-        </button>
-        <button className="button" onClick={() => setRatingsPanel(true)}>
-          Rate Ride
-        </button>
+        <div className="buttonBar">
+          <button className="button" onClick={() => setPreferencesPanel(true)}>
+            Settings
+          </button>
+          <button className="button" onClick={() => setRatingsPanel(true)}>
+            Rate Ride
+          </button>
+        </div>
       </div>
     </PreferencesContext.Provider>
   );

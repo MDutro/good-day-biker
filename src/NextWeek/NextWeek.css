@@ -1,4 +1,4 @@
-.weekList {
+.weekGrid {
   padding-left: 0;
   margin: 0 auto;
   width: 80%; 
@@ -30,6 +30,10 @@
   justify-items: center;
   column-gap: 1rem;
   row-gap: 25px;
+}
+
+.buffer {
+  margin-bottom: 10px;
 }
 
 p {

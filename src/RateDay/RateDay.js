@@ -41,7 +41,7 @@ export const RateDay = (props) => {
 
   const saveRating = () => {
     localStorage.setItem("user-ratings", JSON.stringify(state));
-    props.close();
+    document.getElementById("submit").innerText= "Thanks for your feedback!"
   };
 
   const handleChange = (e) => {
@@ -58,7 +58,7 @@ export const RateDay = (props) => {
     };
       localStorage.setItem("user-preferences", JSON.stringify(ratingsPrefs))
       setPreferences(ratingsPrefs)
-      props.close();
+      document.getElementById("ratings").innerText= "Thanks for your feedback!"
     }
     document.getElementById("ratings").innerText= "No day ratings found! Get out there and ride!"
   };
@@ -66,7 +66,7 @@ export const RateDay = (props) => {
   return (
     <div className="panel">
       <h1>Rate your ride!</h1>
-      <select onChange={handleChange}>
+      <select onChange={handleChange} className="spacer">
         <option value=""></option>
         <option value={"poor"}>1 - Poor Conditions</option>
         <option value={"bad"}>2 - Pretty Bad</option>
@@ -74,12 +74,17 @@ export const RateDay = (props) => {
         <option value={"good"}>4 - Pretty Good</option>
         <option value={"perfect"}>5 - Almost Perfect</option>
       </select>
-      <button className="button" onClick={saveRating}>
+      <p id="submit" className="spacer"></p>
+      <button className="button spacer" onClick={saveRating}>
         Submit
       </button>
-      <p id="ratings">Use day rating history to set preferences?</p>
-      <button className="button" onClick={ratingsSettings}>
+      <img src="rating.png" style={{ maxWidth: "250px"}} alt="" />
+      <p id="ratings" className="spacer">Use day rating history to set preferences?</p>
+      <button className="button spacer spacer" onClick={ratingsSettings}>
         Do it!
+      </button>
+      <button className="button spacer" onClick={() => props.close()}>
+        Close
       </button>
     </div>
   );

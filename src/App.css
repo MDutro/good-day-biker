@@ -48,3 +48,8 @@ body {
   text-decoration: none;
   border-radius: 10px;
 }
+
+.buttonBar {
+  display: flex;
+  justify-content: space-evenly;
+}

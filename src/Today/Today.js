@@ -21,7 +21,7 @@ export const Today = (props) => {
         <p className="bottomRow">{`Wind: ${Math.floor(props.wind)}mph`}</p>
       </div>
     </div>
-      <p style={{marginBottom: "5px"}}>{goodDay? "It's a good day, let's go ride!" : 'Maybe not today...'}</p>
+      <p style={{ fontSize: "1.10rem", marginBottom: "5px"}}>{goodDay? "It's a good day, let's go ride!" : 'Maybe not today...'}</p>
       <button className="button" onClick={props.clearWeather}>New Search</button>
     </div>
     

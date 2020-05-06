@@ -1,7 +1,7 @@
 .panel {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -15,4 +15,47 @@
   font-size: 0.85rem;
   text-decoration: none;
   border-radius: 10px;
+}
+
+.sliderContainer {
+  width: 70%;
+}
+
+.spacer {
+  margin-bottom: 15px;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 10px;
+  border-radius: 5px;  
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.8;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%; 
+  background: rgb(7, 50, 90);
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: rgb(7, 50, 90);
+  cursor: pointer;
+}
+
+.buttonBar {
+  display: flex;
+  justify-content: space-evenly;
 }
