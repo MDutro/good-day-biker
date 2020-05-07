@@ -1,13 +1,14 @@
 import React from 'react';
 import { RateDay } from '../RateDay';
-import '../SettingsDrawer/SettingsDrawer.css'
+import './RatingsDrawer.css';
+import '../SettingsDrawer/SettingsDrawer.css';
 
 export const RatingsDrawer = (props) => {
 
 
   return(
     <div className={props.isOpen === true ? "openedDrawer" : ""}>
-      <div className="drawer">
+      <div className="drawer fromRightDrawer">
       <RateDay 
       close={props.close}
       high={props.high}
