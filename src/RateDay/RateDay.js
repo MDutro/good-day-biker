@@ -1,6 +1,6 @@
 import React, { useReducer } from "react";
 import { PreferencesContext } from "../utils/PreferencesContext";
-import "../UserPreferences.css";
+import "../UserPreferences/UserPreferences.css";
 
 const initialRating = JSON.parse(localStorage.getItem("user-ratings")) || {
   poor: [65, 25, 10],
