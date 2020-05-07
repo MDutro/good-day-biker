@@ -22,7 +22,7 @@ export const UserPreferences = (props) => {
     <div className="panel">
       <h1>User Preferences</h1>
       <p className="spacer">
-        Minimum temperature: <strong>{preferences.high}</strong>
+        Minimum temperature: <strong>{preferences.high} F</strong>
       </p>
       <div className="sliderContainer">
         <input
@@ -37,7 +37,7 @@ export const UserPreferences = (props) => {
         />
       </div>
       <p className="spacer">
-        Maximum precipitation chance: <strong>{preferences.rain}</strong>
+        Maximum precipitation chance: <strong>{preferences.rain}%</strong>
       </p>
       <div className="sliderContainer">
         <input
@@ -52,7 +52,7 @@ export const UserPreferences = (props) => {
         />
       </div>
       <p className="spacer">
-        Maximum wind speed: <strong>{preferences.wind}</strong>
+        Maximum wind speed: <strong>{preferences.wind} mph</strong>
       </p>
       <div className="sliderContainer spacer">
         <input
