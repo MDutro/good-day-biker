@@ -34,6 +34,7 @@ export const UserPreferences = (props) => {
           onChange={(e) =>
             setPreferences({ ...preferences, high: e.target.value })
           }
+          aria-label="set minimum temperature"
         />
       </div>
       <p className="spacer">
@@ -49,6 +50,7 @@ export const UserPreferences = (props) => {
           onChange={(e) =>
             setPreferences({ ...preferences, rain: e.target.value })
           }
+          aria-label="set maximum chance of rain"
         />
       </div>
       <p className="spacer">
@@ -64,6 +66,7 @@ export const UserPreferences = (props) => {
           onChange={(e) =>
             setPreferences({ ...preferences, wind: e.target.value })
           }
+          aria-label="set maximum wind speed"
         />
       </div>
       <button className="button spacer" onClick={savePreferences}>
