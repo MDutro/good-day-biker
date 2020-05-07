@@ -1,5 +1,5 @@
 import React from 'react';
-import { ListItem } from '../ListItem/ListItem';
+import { ListItem } from '../ListItem';
 import './NextWeek.css';
 
 export const NextWeek = ({weather}) => {
