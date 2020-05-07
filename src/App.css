@@ -10,7 +10,7 @@ body {
 .bikeBackground {
   background-image: url(/bicycles.jpg);
   height: calc(3rem + 300px);
-  width: 100%;
+  width: 100vw;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
